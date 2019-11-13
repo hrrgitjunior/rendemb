@@ -11,9 +11,10 @@
             [ring.middleware.json :as middleware]))
 
 (defroutes app-routes
-  (GET "/" [] (response/resource-response "index.html" {:root "public"}))
+  (GET "/" []
+      (response/resource-response "index.html"  {:root "public"}))
   (route/resources "/")
-  (GET "/hello" []) (response/response {:body {:greeting "Ring Server"}}))
+  (GET "/hello" [] (response/response {:body {:greeting "Ring Server"}})))
 
 
   ; (ANY "*" []
