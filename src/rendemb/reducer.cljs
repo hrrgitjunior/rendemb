@@ -20,5 +20,5 @@
     (println "===============")
     (println a)
     ;(swap! !state Action a)
-    (cljs.pprint/pprint @!state)
+    ;(cljs.pprint/pprint @!state)
     (recur)))
