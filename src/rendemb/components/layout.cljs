@@ -24,11 +24,11 @@
                   (fn []
                     (go
                      (let [res (<! (http/post "/design"))]
-                       (println "====" (get-in res [:body :greeting])))))}
-                       ; (dispatch! {:type :layout :name
-                       ;             (-> js/document
-                       ;               (.getElementById "layouted")
-                       ;               (.-value))}))))}
+                       (println "====" (get-in res [:body :greeting]))
+                       (dispatch! {:type :layout :name "AAA"}))))}
+                                   ; (-> js/document
+                                   ;   (.getElementById "layouted")
+                                   ;   (.-value))}))))}
                 "Dispatch"]
 
               [tab-pages-component]]))]
