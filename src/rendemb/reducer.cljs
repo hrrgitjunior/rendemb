@@ -18,4 +18,5 @@
 (go-loop []
   (when-let [a (a/<! !actions)]
     (swap! !state Action a)
+    (js/console.log @!state)
     (recur)))
