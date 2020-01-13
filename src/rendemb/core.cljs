@@ -2,22 +2,26 @@
   (:require-macros [cljs.core.async.macros :refer [go]])
   (:require [reagent.core :as r]
             [goog.dom]
-            [cljs.core.async :as async :refer [<! chan close! put!]]
-            [cljs-http.client :as http]))
+            [cljs-http.client :as http]
+            [rendemb.reducer :as rr]
+            [rendemb.components.layout :refer [layout-component]]
+            [rendemb.reducer]))
+
 
 (def by-id goog.dom.getElement)
 
 (defn app-container []
   [:div
-   [:h1 {}
-    "Hello World 123"]
-   [:button
-    {:on-click
-     (fn []
-       (go
-         (let [res (<! (http/get "/hello"))]
-           (println "====" res))))}
-    "Button 1"]])
+    [layout-component (:layout @rr/!state)]])
+   ; [:h1 {}
+   ;  "Hello World 1234"]
+   ; [:button
+   ;  {:on-click
+   ;   (fn []
+   ;     (go
+   ;       (let [res (<! (http/get "/hello"))]
+   ;         (println "====" res))))}
+   ;  "Button 1"]])
 
 
 (r/render-component [app-container] (by-id "app"))

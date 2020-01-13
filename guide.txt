@@ -1,0 +1,4 @@
+lein run  ;;; run -main from web.clj with port 5000 
+lein figwheel
+localhost:5000
+fighweel at 3450 with out repl

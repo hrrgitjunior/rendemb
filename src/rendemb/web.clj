@@ -1,5 +1,5 @@
 (ns rendemb.web
-  (:require [compojure.core :refer [defroutes GET ANY]]
+  (:require [compojure.core :refer [defroutes GET  POST ANY]]
             [compojure.handler :refer [site]]
             [compojure.route :as route]
             [clojure.java.io :as io]
@@ -14,7 +14,16 @@
   (GET "/" []
       (response/resource-response "index.html"  {:root "public"}))
   (route/resources "/")
-  (GET "/hello" [] (response/response {:body {:greeting "Ring Server"}})))
+  (GET "/hello" []
+   (response/response {:greeting "Ring Server"}))
+
+  (POST "/design" req
+   (response/response
+     (let [a 10]
+      (println "=== POST DESIGN ===" req)
+      {:greeting "Ring Server"}))))
+
+
 
 
   ; (ANY "*" []
@@ -27,7 +36,7 @@
       middleware/wrap-json-response))
 
 (defn -main [& [port]]
-  (println "=========")
+  (println "=========+++====")
   (let [port (Integer. (or port (env :port) 5000))]
     (println port)
     (jetty/run-jetty (site #'app)
