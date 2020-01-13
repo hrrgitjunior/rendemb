@@ -17,6 +17,8 @@
 
 (go-loop []
   (when-let [a (a/<! !actions)]
+    (println "===============")
+    (println a)
     (swap! !state Action a)
     (cljs.pprint/pprint @!state)
     (recur)))
