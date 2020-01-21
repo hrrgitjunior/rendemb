@@ -11,18 +11,7 @@
 (def by-id goog.dom.getElement)
 
 (defn app-container []
-  [:div
-    [layout-component (:layout @rr/!state)]])
-   ; [:h1 {}
-   ;  "Hello World 1234"]
-   ; [:button
-   ;  {:on-click
-   ;   (fn []
-   ;     (go
-   ;       (let [res (<! (http/get "/hello"))]
-   ;         (println "====" res))))}
-   ;  "Button 1"]])
-
+  [layout-component (:layout @rr/!state)])
 
 (r/render-component [app-container] (by-id "app"))
 

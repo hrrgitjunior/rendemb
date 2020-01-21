@@ -4,29 +4,31 @@
             [rendemb.reducer :refer [dispatch!]]))
 
 (defn tab-page [children]
-  [:div
-    children])
+  children)
 
 (defn tab-pages-component []
   (let [page-number (r/atom 1)
         did-mount
         (fn [])
-
         render
         (fn []
           (let [props (r/props (r/current-component))]
-            [:div
-              [:div
-                [:button
-                  {:on-click (fn [] (reset! page-number 1))}
-                  "Tab 1"]
-                [:button
-                  {:on-click (fn [] (reset! page-number 2))}
-                  "Tab 2"]]
+            [:div.row
+             [:ul.nav.nav-tabs
+              [:li {:class (when (= @page-number 1) "active")}
+               [:a {:href "#"
+                    :on-click (fn [] (reset! page-number 1))}
+                "Page1"]]
+              [:li {:class (when (= @page-number 2) "active")}
+               [:a {:href "#"
+                    :on-click (fn [] (reset! page-number 2))}
+                "Page2"]]]
 
+
+             [:div
               [tab-page (case @page-number
-                          1 [:div "PAGE 1"]
-                          2 [:div "PAGE 2"])]]))]
+                         1 [:div "PAGE 1"]
+                         2 [:div "PAGE 2"])]]]))]
 
 
 
