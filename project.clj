@@ -12,6 +12,7 @@
                  [org.clojure/core.async "0.4.474"]
                  [cljs-http "0.1.18"]
                  [ring/ring-json "0.5.0"]
+                 [ring/ring-defaults "0.3.2"]
                  ;-------
                  [reagent "0.9.0-rc1"]
                  [compojure "1.6.1"]
@@ -30,12 +31,19 @@
   :uberjar-name "rendemb.jar"
   :profiles {:dev {:dependencies [[cider/piggieback "0.4.1"]
                                   [figwheel-sidecar "0.5.18"]
-                                  [binaryage/devtools "0.9.10"]]
+                                  [binaryage/devtools "0.9.10"]
+                                  [cljs-ajax "0.8.4"]
+                                  [jayq "0.1.0-alpha3"]
+                                  ;[reagent "0.8.1" :exclusions [[cljsjs/react]]
+                                  ;                             [cljsjs/react-dom]
+                                  ;                             [cljsjs/create-react-class]]
+                                  [re-frame "0.10.6"]]
                    :source-paths ["src" "dev"]
                    :cljsbuild {:builds [{:id "dev"
                                          :source-paths ["src"]
                                          :figwheel true
                                          :compiler {:main "rendemb.core"
+                                                    :externs ["resources/public/lib/jquery.dataTables.js"]
                                                     :preloads [devtools.preload]
                                                     :asset-path "js/out"
                                                     :output-to "resources/public/js/main.js"

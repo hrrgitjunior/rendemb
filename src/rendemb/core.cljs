@@ -4,14 +4,17 @@
             [goog.dom]
             [cljs-http.client :as http]
             [rendemb.reducer :as rr]
-            [rendemb.components.layout :refer [layout-component]]
-            [rendemb.reducer]))
-
+            [rendemb.components.layout :refer [layout-component app-render]]
+            [rendemb.reducer]
+            [rendemb.reframe-core]))
 
 (def by-id goog.dom.getElement)
 
+;(defn app-container []
+;  [layout-component (:layout @rr/!state)])
+
 (defn app-container []
-  [layout-component (:layout @rr/!state)])
+  [app-render])
 
 (r/render-component [app-container] (by-id "app"))
 
